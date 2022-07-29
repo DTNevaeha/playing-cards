@@ -2,8 +2,8 @@ package com.tlglearning.cards;
 
 import com.tlglearning.cards.model.Card;
 import com.tlglearning.cards.model.Deck;
-import com.tlglearning.cards.strategy.RankFirstComparator;
 import java.security.SecureRandom;
+import java.util.Comparator;
 import java.util.Random;
 
 public class TestMain {
@@ -14,7 +14,7 @@ public class TestMain {
     System.out.println(deck);
     deck.shuffle(rng); //shuffle deck randomly
     System.out.println(deck);
-//    for (Card card : deck) { //no idea what this does other than print cards in a vertical line
+//    for (Card card : deck) { //print cards in a vertical line
 //      System.out.println(card);
 //    }
     deck.sort();
@@ -24,4 +24,16 @@ public class TestMain {
     System.out.println(deck);
   }
 
+  static class RankFirstComparator implements Comparator<Card> {
+
+    @Override
+    public int compare(Card card1, Card card2) {
+      int comparison = card1.getRank().compareTo(card2.getRank());
+      if (comparison == 0) {
+        comparison = card1.getSuit().compareTo(card2.getSuit());
+      }
+      return comparison;
+    }
+
+  }
 }

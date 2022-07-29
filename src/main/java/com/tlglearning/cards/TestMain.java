@@ -21,13 +21,7 @@ public class TestMain {
     deck.sort();
     System.out.println(deck); //Sort by rank
 
-    deck.sort((card1, card2) -> {
-      int comparison = card1.getRank().compareTo(card2.getRank());
-      if (comparison == 0) {
-        comparison = card1.getSuit().compareTo(card2.getSuit());
-      }
-      return comparison;
-    }); //makes it so they are all sorted by suit
+    deck.sort(Comparator.comparing(Card::getRank).thenComparing(Card::getSuit));
     System.out.println(deck);
 
   }

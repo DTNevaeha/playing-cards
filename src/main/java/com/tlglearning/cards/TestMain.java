@@ -17,10 +17,11 @@ public class TestMain {
 //    for (Card card : deck) { //print cards in a vertical line
 //      System.out.println(card);
 //    }
+
     deck.sort();
     System.out.println(deck); //Sort by rank
 
-    class RankFirstComparator implements Comparator<Card> {
+    deck.sort(new Comparator<Card>() {
 
       @Override
       public int compare(Card card1, Card card2) {
@@ -31,10 +32,9 @@ public class TestMain {
         return comparison;
       }
 
-    }
-
-    deck.sort(new RankFirstComparator()); //makes it so they are all sorted by suit
+    }); //makes it so they are all sorted by suit
     System.out.println(deck);
+
   }
 
 }

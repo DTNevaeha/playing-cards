@@ -62,7 +62,7 @@ public class Deck implements Iterable<Card> {
   }
 
   public boolean isEmpty() {
-    return drawIterator != null && drawIterator.hasNext();
+    return drawIterator != null && !drawIterator.hasNext();
   }
   public Card draw() {
     if (drawIterator == null) {
